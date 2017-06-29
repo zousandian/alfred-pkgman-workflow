@@ -165,7 +165,7 @@ class Repo
 				"{$this->id}-search",
 				$search_url,
 				"No {$this->kind} were found that matched \"{$query}\"",
-				"Click to see the results for yourself",
+				is_string($this->pkgs) ? $this->pkgs : "Click to see the results for yourself",
 				"icon-cache/{$this->id}.png"
 			);
 		}

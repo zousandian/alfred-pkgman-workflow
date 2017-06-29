@@ -47,6 +47,13 @@ class Cache {
 			
 			$this->w->write($data, $name.'.json');
 			$pkgs = json_decode( $data );
+			if (json_last_error() == JSON_ERROR_NONE) {
+				$this->w->write($data, $name.'.json');
+				$this->queries[$name] = time();
+			} else {
+				// $data not json
+				return 'something wrong: '.$data;
+			}
 		} else if (!$pkgs) {
 			$pkgs = array();
 		}
